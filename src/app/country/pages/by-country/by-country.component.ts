@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class ByCountryComponent {
 
+  constructor(){
+
+  }
+
+  newFunction = () =>{
+    if (true === true){
+
+    }
+  }
+
 }
