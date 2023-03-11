@@ -17,21 +17,25 @@ export class ByCountryComponent {
 
   }
 
-  buscar(): void{
+  buscar(termino: string): void{
 
     this.error = false;
+    this.termino = termino;
     
     this._countryService.buscarPais( this.termino ).subscribe({
       next: (countries) =>{
         this.countries = countries;
-        console.log(this.countries);
       },
       error: (error) =>{
-        console.log(error);
         this.error = true;
+        this.countries = [];
       }
     });
     
+  }
+
+  sugerencias(termino: string){
+    this.error = false;
   }
 
 
