@@ -16,7 +16,7 @@
             <th>{{country.capital}}, {{country.name}}</th>
             <th>{{country.population | number}}</th>
             <th>
-                <a [routerLink]="['pais', country.alpha2Code]">Ver...</a>
+                <span (click)="showCountry(country.alpha2Code)" class="span-link">Ver...</span>
             </th>
         </tr>
     </tbody>

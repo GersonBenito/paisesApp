@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -12,7 +12,11 @@ export class CountryService {
 
   private API_URL: string = environment.apiUrl;
 
-  constructor( private http: HttpClient ) { }
+  // angular v15
+  private http = inject( HttpClient );
+
+  // angular v13
+  // constructor( private http: HttpClient ) { }
 
   buscarPais( termino: string ): Observable<Country[]>{
     return this.http.get<Country[]>(`${this.API_URL}/name/${termino}`);
@@ -24,6 +28,10 @@ export class CountryService {
 
   buscarPorCodigoAlpha( termino: string ): Observable<Country>{
     return this.http.get<Country>(`${this.API_URL}/alpha/${termino}`);
+  }
+
+  buscarRegion( termino: string ): Observable<Country[]>{
+    return this.http.get<Country[]>(`${this.API_URL}/region/${termino}`);
   }
   
 }

@@ -7,8 +7,7 @@
             (onEnter)="buscar($event)"
             (onDebounce)="sugerencias($event)"
             placeholder="Buscar por pais..."
-        >
-        </app-search-country>
+        />
     </div>
 </div>
 
@@ -19,10 +18,7 @@
 
 <div class="row">
     <div class="col">
-       <app-table-country 
-        *ngIf="countries.length > 0" 
-        [countries]="countries">
-        </app-table-country>
+       <app-table-country *ngIf="countries.length > 0" [countries]="countries" />
     </div>
 </div>
 
