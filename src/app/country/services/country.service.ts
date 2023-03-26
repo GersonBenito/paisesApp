@@ -21,5 +21,9 @@ export class CountryService {
   buscarCapital( termino: string ): Observable<Country[]> {
     return this.http.get<Country[]>(`${this.API_URL}/capital/${termino}`);
   }
+
+  buscarPorCodigoAlpha( termino: string ): Observable<Country>{
+    return this.http.get<Country>(`${this.API_URL}/alpha/${termino}`);
+  }
   
 }
