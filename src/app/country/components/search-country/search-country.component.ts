@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -13,11 +13,12 @@ export class SearchCountryComponent implements OnInit{
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
   @Input() placeholder: string = '';
 
-  public $debounce: BehaviorSubject<string> = new BehaviorSubject('');
+  public $debounce: Subject<string> = new Subject();
 
   public termino: string = '';
 
   ngOnInit(): void {
+    // el BehaviorSubject se ejecuta al inicio, mientras que el Subject no
       this.$debounce.pipe(debounceTime(300)).subscribe({
         next: value => this.onDebounce.emit( value )
       });
